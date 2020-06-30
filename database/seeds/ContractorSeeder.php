@@ -17,7 +17,7 @@ class ContractorSeeder extends Seeder
         		[
                 'name'=>'Cty Vận chuyển Gỗ',
                 'email'=>'vanchuyengo@example.com',
-                'email_verified_at'=>now(),
+                
                 'password'=>bcrypt('123456'),
                 'images'=>'cat12',
                 'address'=>'Hoa Quả Sơn',
@@ -30,7 +30,7 @@ class ContractorSeeder extends Seeder
             [
                 'name'=>'Cty Vận Thuỷ sản',
                 'email'=>'vanchuyenthuysan@example.com',
-                'email_verified_at'=>now(),
+                
                 'password'=>bcrypt('123456'),
                 'images'=>'cat12',
                 'address'=>'tây nguyên',
@@ -43,7 +43,7 @@ class ContractorSeeder extends Seeder
             [
                 'name'=>'Cty vận chuyển đồ lạnh',
                 'email'=>'vanchuyendolanh@example.com',
-                'email_verified_at'=>now(),
+                
                 'password'=>bcrypt('123456'),
                 'images'=>'cat12',
                 'address'=>'Hoàng Sa',

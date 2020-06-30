@@ -95,19 +95,19 @@
 
       <!-- Nav Item - category -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('category.index') }}">
           <i class="fas fa-atlas"></i>
           <span>Danh mục</span></a>
       </li>
       <!-- Nav Item - unit -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('unit.index') }}">
           <i class="fas fa-calculator"></i>
           <span>Đơn vị tính</span></a>
       </li>
       <!-- Nav Item - unit -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('name') }}">
+        <a class="nav-link" href="{{ route('news.index') }}">
           <i class="fas fa-newspaper"></i>
           <span>Tin tức</span></a>
       </li>
@@ -364,7 +364,41 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script> --}}
+<script>
+    $('#edit').on('show.bs.modal', function (event) {
+      console.log('open modal')
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var name = button.data('myname')
+      var cateId = button.data('catid')
 
+      var unitId = button.data('unitid')
+      var nameunit = button.data('nameunit')
+      var mydes = button.data('mydes')
+
+      var modal = $(this)
+
+      modal.find('.modal-body #category').val(name)
+      modal.find('.modal-body #catid').val(cateId)
+
+      modal.find('.modal-body #unitid').val(unitId)
+      modal.find('.modal-body #unit').val(nameunit)
+      modal.find('.modal-body #des').val(mydes)
+
+
+    })
+</script>
+<script>
+    $('#delete').on('show.bs.modal', function (event) {
+
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var cateId = button.data('catid')
+      var unitId = button.data('unitid')
+      var modal = $(this)
+    
+      modal.find('.modal-body #catid').val(cateId)
+      modal.find('.modal-body #unitid').val(unitId)
+    })
+</script>
 </body>
 
 </html>

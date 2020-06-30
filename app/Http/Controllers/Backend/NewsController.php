@@ -4,16 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Unit;
-use App\Services\UnitService;
-class UnitController extends Controller
+use App\Models\News;
+class NewsController extends Controller
 {
-    protected $unitService;
-
-    public function __construct(UnitService $unitService )
-    {
-        $this->unitService = $unitService;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +14,7 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $data = $this->unitService->getAll(null,25);
-        return view('backend.unit.show', ['data'=>$data]);
+        //
     }
 
     /**
@@ -43,17 +35,7 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name'=>'required'
-        ]);
-
-        $units = new Unit;
-
-        $units->name = $request->input('name');
-        $units->description = $request->input('description');
-
-        $units->save();
-        return redirect('/unit')->with('success','Save Success');
+        //
     }
 
     /**
@@ -85,13 +67,9 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $unit = Unit::findOrFail($request->unit_id);
-
-        $unit->update($request->all());
-
-        return redirect('/unit')->with('success','Update Success');
+        //
     }
 
     /**
@@ -100,12 +78,8 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $unit = Unit::findOrFail($request->unit_id);
-
-        $unit->delete();
-
-        return redirect('/unit')->with('success','Delete Success');
+        //
     }
 }

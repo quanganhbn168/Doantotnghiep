@@ -58,5 +58,6 @@ Route::namespace('Backend')->group(function(){
 	Route::get('/tenderer/show', 'TendererController@index')->name('backend.tenderer.show');
 	Route::resource('/category', 'CategoryController');
 	Route::resource('/unit','UnitController');
+	Route::resource('/news','NewsController');
 
 });

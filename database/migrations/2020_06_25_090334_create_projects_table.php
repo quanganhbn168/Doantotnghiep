@@ -14,13 +14,13 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->increment('id');
+            $table->id();
             $table->string('name');
             $table->string('category_id');
             $table->integer('tenderer_id');
-            $table->date('timeStart');
-            $table->date('timeEnd');
-
+            $table->string('timeStart');
+            $table->string('timeEnd');
+            $table->boolean('publish')->default(false);
             $table->index('category_id');
             $table->index('tenderer_id');
 

@@ -16,7 +16,7 @@ class TendererSeeder extends Seeder
                     [
                 'name'=>'Cty Hoa Quả Sơn',
                 'email'=>'hoaquason@example.com',
-                'email_verified_at'=>now(),
+                
                 'password'=>bcrypt('123456'),
                 'images'=>'cat12',
                 'address'=>'Hoa Quả Sơn',
@@ -29,7 +29,7 @@ class TendererSeeder extends Seeder
             [
                 'name'=>'Cty Thuỷ sản Vịnh Bắc Bộ',
                 'email'=>'thuysanbacbo@example.com',
-                'email_verified_at'=>now(),
+                
                 'password'=>bcrypt('123456'),
                 'images'=>'cat12',
                 'address'=>'tây nguyên',
@@ -42,7 +42,7 @@ class TendererSeeder extends Seeder
             [
                 'name'=>'Cty Gỗ Sản xuất Hoàng Sa',
                 'email'=>'Gohoangsa@example.com',
-                'email_verified_at'=>now(),
+                
                 'password'=>bcrypt('123456'),
                 'images'=>'cat12',
                 'address'=>'Hoàng Sa',

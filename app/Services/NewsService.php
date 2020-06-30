@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Services;
 
-use App\Models\Category;
-class CategoryService 
+use App\Models\Unit;
+
+class NewsService 
 {
 	/**
 	 * [save description]
@@ -12,32 +14,37 @@ class CategoryService
 	 */
 	public function save(array $data, $id = null)
 	{
-		return Category::updateOrCreate(
+		return Unit::updateOrCreate(
 			[
 				'id'=> $id
 			],
 			[
-				'name' => $data['name'],
+				'title' => $data['title'],
+				'content' => $data['content']
+				
 			]
 		);
 	}
-
 	public function getAll($orderBys = [],$limit = 10)
 	{
-		$query = Category::query();
+		$query = Unit::query();
 			if($orderBys) {
 				$query->orderBy($orderBys['column'], $orderBys['sort']);
 			}
-		return Category::paginate();
+		return Unit::paginate();
 	}
-	
+	public function getListUnit(){
+		$query = Category::all()->toArray();
+		return $query;
+	}
 	public function findById($id)
 	{
-		return Category::find($id);
+		return Unit::find($id);
 	}
 
 	public function delete($ids = [])
 	{
-		return Category::destroy($ids);
+		return Unit::destroy($ids);
 	}
+
 }

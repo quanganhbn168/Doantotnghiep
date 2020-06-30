@@ -17,6 +17,7 @@ class CategoryController extends Controller
 
     public function index()
     {
+        
         $data = $this->categoryService->getAll(null,25);
         return view('backend.category.show', ['data'=>$data]);
     }

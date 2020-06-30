@@ -14,7 +14,7 @@ class CreateTenderersTable extends Migration
     public function up()
     {
         Schema::create('tenderers', function (Blueprint $table) {
-            $table->increment('id');
+            $table->id();
             $table->string('name')->unique();
             $table->string('email')->unique();
             $table->string('password');

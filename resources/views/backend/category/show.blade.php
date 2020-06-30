@@ -140,39 +140,4 @@
 
 
 </div>
-<script>
-		$('#edit').on('show.bs.modal', function (event) {
-			console.log('open modal')
-		  var button = $(event.relatedTarget) // Button that triggered the modal
-		  var name = button.data('myname')
-		  var cateId = button.data('catid')
-
-		  var unitId = button.data('unitid')
-		  var nameunit = button.data('nameunit')
-		  var mydes = button.data('mydes')
-
-		  var modal = $(this)
-
-		  modal.find('.modal-body #category').val(name)
-		  modal.find('.modal-body #catid').val(cateId)
-
-		  modal.find('.modal-body #unitid').val(unitId)
-		  modal.find('.modal-body #unit').val(nameunit)
-		  modal.find('.modal-body #des').val(mydes)
-
-
-		})
-</script>
-<script>
-		$('#delete').on('show.bs.modal', function (event) {
-
-		  var button = $(event.relatedTarget) // Button that triggered the modal
-		  var cateId = button.data('catid')
-		  var unitId = button.data('unitid')
-		  var modal = $(this)
-		
-		  modal.find('.modal-body #catid').val(cateId)
-		  modal.find('.modal-body #unitid').val(unitId)
-		})
-</script>
 @endsection
