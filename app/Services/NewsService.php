@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Unit;
+use App\Models\News;
 
 class NewsService 
 {
@@ -14,37 +14,36 @@ class NewsService
 	 */
 	public function save(array $data, $id = null)
 	{
-		return Unit::updateOrCreate(
+		return News::updateOrCreate(
 			[
 				'id'=> $id
 			],
 			[
 				'title' => $data['title'],
-				'content' => $data['content']
-				
+				'content' => $data['content']	
 			]
 		);
 	}
 	public function getAll($orderBys = [],$limit = 10)
 	{
-		$query = Unit::query();
+		$query = News::query();
 			if($orderBys) {
 				$query->orderBy($orderBys['column'], $orderBys['sort']);
 			}
-		return Unit::paginate();
+		return News::paginate();
 	}
-	public function getListUnit(){
+	public function getListNews(){
 		$query = Category::all()->toArray();
 		return $query;
 	}
 	public function findById($id)
 	{
-		return Unit::find($id);
+		return News::find($id);
 	}
 
 	public function delete($ids = [])
 	{
-		return Unit::destroy($ids);
+		return News::destroy($ids);
 	}
 
 }

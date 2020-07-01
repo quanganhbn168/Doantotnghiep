@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('quantity');
             $table->string('description')->nullable();
             $table->string('project_id');
+            
             $table->index('project_id');
 
             $table->timestamps();

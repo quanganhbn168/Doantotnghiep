@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Project;
 use App\Services\ProjectService;
+use App\Models\News;
 class HomeController extends Controller
 {
 	protected $projectService;
@@ -19,7 +20,7 @@ class HomeController extends Controller
     {
     	$projects = Project::orderBy('created_at','desc')->paginate(10);
     	$categories = Category::all();
-
-    	return view('frontend.home',compact('projects','categories'));
+        $news = News::orderBy('created_at','desc')->paginate(10);
+    	return view('frontend.home',compact('projects','categories','news'));
     }
 }

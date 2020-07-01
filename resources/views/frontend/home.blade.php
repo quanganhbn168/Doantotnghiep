@@ -17,7 +17,7 @@
   @endif
   <div class="list-group">
     <a href="#" class="list-group-item list-group-item-action active">
-      Danh mục loại hàng
+      Loại hàng vận chuyển
     </a>
     @foreach($categories as $key=>$category)
     <a href="#" class="list-group-item list-group-item-action">{{$category->name}}</a>
@@ -71,23 +71,7 @@
     font-weight: 500;">Tin Tức</span>
   </div>
     <div class="list-new">
-      <ul>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-      </ul>
+      @include('frontend.news.index',['data'=>$news ?? null])
     </div>
 </div>
 

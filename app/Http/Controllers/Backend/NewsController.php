@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Services\NewsService;
 class NewsController extends Controller
 {
     /**
@@ -12,9 +13,16 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $newsService;
+    public function __construct(NewsService $newsService)
+    {
+        $this->newsService = $newsService;
+    }
     public function index()
     {
-        //
+        $news = News::orderBy('created_at')->paginate(10);
+        return views('frontend.home',['news'=>$news]);
+
     }
 
     /**
