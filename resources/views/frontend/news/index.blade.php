@@ -3,11 +3,11 @@
 	@isset($data)
 	@foreach($data as $item)
 	<li>
-		<div class="news clearfix">
-			<div class="" style="float: left;">
+		<div class="news row">
+			<div class="col-md-3">
 			<a href="#"><img src="https://picsum.photos/200/300.jpg" alt=""></a>
 			</div>
-			<div class="title" style="float: right;">
+			<div class="col-md-9">
 			<h6><a href="#">{{$item->title}}</a></h6>
 			<span class="description">{{$item->description}}</span>
 			</div>
@@ -33,6 +33,9 @@
 		color: #000;
 	}
 	h6{
+		margin-left: 10px; 
+	}
+	span{
 		margin-left: 10px; 
 	}
 </style>

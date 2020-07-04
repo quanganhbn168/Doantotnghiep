@@ -35,8 +35,8 @@
     padding-bottom: 0px;
     font-weight: 500;">CÁC DỰ ÁN MỚI NHẤT</span>
     </div>
-        <div>
-        	<table class="table">
+        <div style="margin-top: 10px;">
+        	<table class="table table-bordered">
           <tr>
             <th scope="col">Stt</th>
             <th scope="col">Tên dự án</th>

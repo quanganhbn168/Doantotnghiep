@@ -20,7 +20,7 @@ body{
 #navbarSupportedContent .menu li{
 	
     border-right: 1px solid #fff;
-    padding:7px;
+   
 }
 #navbarSupportedContent ul li a{
 	color:#fff;
@@ -30,7 +30,7 @@ body{
     
 }
 #navbarSupportedContent ul li:hover{
-	background: #000066;
+	background: #1b9def;
 	
 }
 .wrapper{
@@ -68,3 +68,17 @@ body{
     border-bottom: 1px #0685d6 solid;
     padding-bottom: 0px;
 }
+#header .logo{
+	margin: 2px 0px 10px 0px;
+}
+
+#banner{
+	padding: 0px;
+}
+
+#search-form {
+	background-image: url('/images/backgroundsearchform.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#search-form 

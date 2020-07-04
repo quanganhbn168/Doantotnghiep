@@ -16,17 +16,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset ('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper"> 
-      <div class="container">
-        <div id="header" class="clearfix">
-            <a class="navbar-brand" href="#"><img src="/images/logowebsite.png" alt="" width="200px" height="auto">
-            </a>
-        </div>
-      </div>
+      <nav class="navbar navbar-expand-md navbar-fixed-top main-nav" id="banner">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><img src="/images/logo.png" alt="" width="200px" height="auto"></a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav mx-auto" style="display: block;">
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-phone-alt"></i>096-562-5210</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-envelope" ></i>Dauthauvanchuyen@gmail.com</a></li>
+        </ul>
+        <ul class="nav navbar-nav" style="display: block;">
+          <div class="row">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fab fa-youtube">Youtube</i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fab fa-twitter">Twitter</i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fab fa-facebook">Facebook</i></a>
+            </li>
+          </div>
+            
+            <form>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Nhập từ khoá tìm kiếm">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+              </div>
+            </form>
+        </ul>
+    </div>
+</nav>
     </div>
 <div id="menusite">
   <div class="wrapper">
@@ -83,13 +113,13 @@
                 <!-- Authentication Links -->
               @else
                 <li>
-                  <a class="nav-link" href="{{route('tenderer.login')}}">
-                    <button class="btn btn-warning">Bên Mời Thầu</button>
+                  <a class="nav-link" href="{{route('tenderer.login')}}"><i class="fas fa-user-tie"></i>
+                     Bên Mời Thầu
                   </a>
                 </li>
                 <li>
                   <a class="nav-link" href="{{route('contractor.login')}}">
-                    <button class="btn btn-warning">Bên Dự Thầu</button>
+                    <i class="fas fa-suitcase"></i> Bên Dự Thầu
                   </a>
                 </li>
               @endif
@@ -101,8 +131,58 @@
 </div>
 
 
-<div class="wrapper">
-  <div id="content" class="clearfix container" style="margin-top: 20px">
+<div class="wrapper container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="/images/slider1.jpg" height="450px" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/slider2.png" height="450px" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/sliderlogistics-1.jpg" height="450px" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/slider5.jpg" height="450px" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/slider6.jpg" height="450px" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/slider7.jpg" height="450px" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/slider8.jpg" height="450px" alt="Third slide">
+    </div>
+    
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<div id="search-form" class="sreach-form container">
+  <h3>Tìm kiếm thông tin dự án</h3>
+  <span>Kho dữ liệu được cập nhật liên tục</span>
+  <form action="">
+    @include('frontend.search',['categories'=>$categories])
+  </form>
+</div>
+  <div id="content" class="clearfix" style="margin-top: 20px">
     @yield('content')
   </div>
 </div>
@@ -115,7 +195,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script>$('.carousel').carousel({interval: 2000})</script>
+    <script>$('.carousel').carousel({interval: 5000})</script>
 <script type="text/javascript">
   @yield('script')
 </script>
