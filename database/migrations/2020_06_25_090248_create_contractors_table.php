@@ -18,14 +18,13 @@ class CreateContractorsTable extends Migration
             $table->string('name')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('images');
+            $table->string('images')->nullable();
             $table->string('address');
             $table->string('website');
             $table->string('phone');
-            $table->string('status');
-            $table->string('is_contractor')->default(false);
-
-            $table->timestamps();
+            $table->string('status')->default('1');
+            $table->boolean('is_contractor')->default(false);
+            $table->timestamp('approved_at')->nullable();
         });
     }
 

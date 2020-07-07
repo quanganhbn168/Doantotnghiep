@@ -22,9 +22,9 @@ class TendererSeeder extends Seeder
                 'address'=>'Hoa Quả Sơn',
                 'phone'=>'0912345678',
                 'website'=>'hoaquason.com',
-                'status'=>true,
-                'created_at'=>now(),
-                'updated_at'=>now(),
+                'status'=>'1',
+                'is_tenderer' => 1,
+                'approved_at' => now(),
             ],
             [
                 'name'=>'Cty Thuỷ sản Vịnh Bắc Bộ',
@@ -35,9 +35,9 @@ class TendererSeeder extends Seeder
                 'address'=>'tây nguyên',
                 'phone'=>'0912345679',
                 'website'=>'thuysanbacbo.com',
-                'status'=>true,
-                'created_at'=>now(),
-                'updated_at'=>now(),
+                'status'=>'1',
+                'is_tenderer' => 1,
+                'approved_at' => now(),
             ],
             [
                 'name'=>'Cty Gỗ Sản xuất Hoàng Sa',
@@ -48,9 +48,9 @@ class TendererSeeder extends Seeder
                 'address'=>'Hoàng Sa',
                 'phone'=>'0912345611',
                 'website'=>'GoHoangSa.com',
-                'status'=>true,
-                'created_at'=>now(),
-                'updated_at'=>now(),
+                'status'=>'1',
+                'is_tenderer' => 1,
+                'approved_at' => now(),
             ]
                 ]);
             

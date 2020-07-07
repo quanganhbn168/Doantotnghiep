@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Notifications\NewUser;
 class RegisterController extends Controller
 {
     /*
@@ -95,32 +95,38 @@ class RegisterController extends Controller
     }
 
     /*Create Tenderer*/
-    protected function createTenderer(array $data)
+    protected function createTenderer(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $this->validator($request->all());
         $tenderer = Tenderer::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'images'=>$data['images'],
-            'address'=>$data['phone'],
-            'website'=>$data['website'],
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'address'=>$request->input('address'),
+            'phone'=>$request->input('phone'),
+            'website'=>$request->input('website')
         ]);
-         return redirect()->intended('login/tenderer');
+        $admin = User::where('admin', 1)->first();
+            if ($admin) {
+                $admin->notify(new NewUser($user));
+            }
+
+            return $user;
     }
 
     /*Create Contractor*/
-    protected function createContractor(array $data)
+    protected function createContractor(Request $request)
     {
         $this->validator($request->all())->validate();
-        $tenderer = Contractor::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'images'=>$data['images'],
-            'address'=>$data['phone'],
-            'website'=>$data['website'],
+        $contractor = Contractor::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'address'=>$request->input('address'),
+            'phone'=>$request->input('phone'),
+            'website'=>$request->input('website')
         ]);
+
         return redirect()->intended('login/contractor');
     }
 

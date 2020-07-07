@@ -23,4 +23,9 @@ class HomeController extends Controller
         $news = News::orderBy('created_at','desc')->paginate(5);
     	return view('frontend.home',compact('projects','categories','news'));
     }
+
+    public function approval()
+    {
+        return view('approval');
+    }
 }

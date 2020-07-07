@@ -17,18 +17,21 @@ use Illuminate\Http\Request;
 Auth::routes();
 Route::get('/', 'Frontend\HomeController@index')->name('home');
 Route::namespace('Frontend')->middleware('checkauth')->group(function(){
-	Route::get('/project/create','ProjectController@formcreate')->name('project.create');
-	Route::post('/project/create','ProjectController@store')->name('project.post.create');
-	Route::get('/project/show/{id}', 'ProjectController@show')->name('project.show');
-	Route::get('/tenderer/show/{id}', 'TendererController@show')->name('tenderer.show');
-	Route::get('/project/list/{id}','ProjectController@list')->name('project.list');
-	Route::get('/project/update/{id}','ProjectController@update')->name('project.update');
-	Route::delete('/project/delete/{id}','ProjectController@destroy')->name('project.delete');
-	Route::post('/contractor/join','ProjectController@attachContractor')->name('contractor.join');
-	/*Route::post('/contractor/project/update/{id}','ContractorController@updateProject')->name('contractor.project.update');*/
-	Route::post('/order','OrderController@store')->name('create.order');
-	Route::get('/order/show/{id}','OrderController@show')->name('order.show');
-	Route::get('/order/list/{id}','OrderController@list')->name('order.list');
+	Route::get('/approval', 'HomeController@approval')->name('approval');
+	Route::middleware(['approved'])->group(function () { 
+		Route::get('/project/create','ProjectController@formcreate')->name('project.create');
+		Route::post('/project/create','ProjectController@store')->name('project.post.create');
+		Route::get('/project/show/{id}', 'ProjectController@show')->name('project.show');
+		Route::get('/tenderer/show/{id}', 'TendererController@show')->name('tenderer.show');
+		Route::get('/project/list/{id}','ProjectController@list')->name('project.list');
+		Route::get('/project/update/{id}','ProjectController@update')->name('project.update');
+		Route::delete('/project/delete/{id}','ProjectController@destroy')->name('project.delete');
+		Route::post('/contractor/join','ProjectController@attachContractor')->name('contractor.join');
+		/*Route::post('/contractor/project/update/{id}','ContractorController@updateProject')->name('contractor.project.update');*/
+		Route::post('/order','OrderController@store')->name('create.order');
+		Route::get('/order/show/{id}','OrderController@show')->name('order.show');
+		Route::get('/order/list/{id}','OrderController@list')->name('order.list');
+    });
 });
 
 
@@ -38,8 +41,8 @@ Route::get('/login/contractor', 'Auth\LoginController@showContractorLoginForm')-
 
 
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
-Route::get('/register/tenderer', 'Auth\RegisterController@showTendererRegisterForm');
-Route::get('/register/contractor', 'Auth\RegisterController@showContractorRegisterForm');
+Route::get('/register/tenderer', 'Auth\RegisterController@showTendererRegisterForm')->name('tenderer.register');
+Route::get('/register/contractor', 'Auth\RegisterController@showContractorRegisterForm')->name('contractor.register');
 
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Route::post('/login/tenderer', 'Auth\LoginController@tendererLogin');
@@ -55,9 +58,10 @@ Route::get('/logout/contractor','Auth\LogoutController@contractorLogout')->name(
 
 Route::namespace('Backend')->group(function(){
 	Route::get('/admin', function(){ return view('backend/index');})->name('admin');
-	//Route::get('/tenderer/show', 'TendererController@index')->name('backend.tenderer.show');
+	Route::get('/tenderer/index', 'TendererController@index')->name('backend.tenderer.index');
 	Route::resource('/category', 'CategoryController');
 	Route::resource('/unit','UnitController');
 	Route::resource('/news','NewsController');
 	Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
+
 });

@@ -23,9 +23,9 @@ class ContractorSeeder extends Seeder
                 'address'=>'Hoa Quả Sơn',
                 'phone'=>'0912345678',
                 'website'=>'hoaquason.com',
-                'status'=>true,
-                'created_at'=>now(),
-                'updated_at'=>now(),
+                'status'=>'1',
+                'is_contractor' => 1,
+                'approved_at' => now(),
             ],
             [
                 'name'=>'Cty Vận Thuỷ sản',
@@ -36,9 +36,11 @@ class ContractorSeeder extends Seeder
                 'address'=>'tây nguyên',
                 'phone'=>'0912345679',
                 'website'=>'thuysanbacbo.com',
-                'status'=>true,
-                'created_at'=>now(),
-                'updated_at'=>now(),
+                'status'=>'1',
+                'is_contractor' => 1,
+                'approved_at' => now(),'status'=>'1',
+                'is_contractor' => 1,
+                'approved_at' => now(),
             ],
             [
                 'name'=>'Cty vận chuyển đồ lạnh',
@@ -49,9 +51,9 @@ class ContractorSeeder extends Seeder
                 'address'=>'Hoàng Sa',
                 'phone'=>'0912345611',
                 'website'=>'GoHoangSa.com',
-                'status'=>true,
-                'created_at'=>now(),
-                'updated_at'=>now(),
+                'status'=>'1',
+                'is_contractor' => 1,
+                'approved_at' => now(),
             ]
         
         ]);

@@ -11,7 +11,6 @@ class Contractor extends Authenticatable
         'name', 
         'email', 
         'password',
-        'images',
         'address',
         'phone',
         'website',
