@@ -26,7 +26,7 @@
 
 
 <div class="grid-view">
-<button type="button" style="float: right;margin-bottom: 2px;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-plus"> Thêm
+<button type="button" style="float: right;margin-bottom: 2px;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i> Thêm
 </button>
 @if (!empty ($data))
 	<table border="1" width="600">
@@ -34,7 +34,7 @@
 		  <thead class="thead-dark">
 		    <tr>
 		      <th scope="col">Tên sản phẩm</th>
-		      <th scope="col" colspan="2" style="width: 20%;text-align: center;">Action</th>
+		      <th scope="col" colspan="2" style="width: 25%;text-align: center;">Action</th>
 		    </tr>
 		  </thead>
 					@foreach ($data as $item)
@@ -42,8 +42,8 @@
 		    <tr>
 		      <td>{{ $item['name'] }}</td>
 		      <td><button type="button" class="btn btn-info" data-catid="{{$item->id}}" data-myname="{{$item->name}}" data-toggle="modal" data-target="#edit">
-		      	<span class="glyphicon glyphicon-edit"> Edit</button></td>
-			  <td><button type="button" class="btn btn-danger" data-catid="{{$item->id}}" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"> Delete</button></td>
+		      	<i class="fas fa-edit"></i> Edit</button></td>
+			  <td><button type="button" class="btn btn-danger" data-catid="{{$item->id}}" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i> Delete</button></td>
 		    </tr>
 		    
 		  </tbody>

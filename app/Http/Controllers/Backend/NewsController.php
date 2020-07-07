@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Services\NewsService;
+
 class NewsController extends Controller
 {
     /**
@@ -20,8 +21,8 @@ class NewsController extends Controller
     }
     public function index()
     {
-        $news = News::orderBy('created_at')->paginate(10);
-        return views('frontend.home',['news'=>$news]);
+        $news = News::orderBy('created_at','desc')->paginate(10);
+        return view('backend.news.list',['data'=>$news]);
 
     }
 
@@ -32,7 +33,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.news.create');
     }
 
     /**
@@ -43,7 +44,20 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title-news'=>'required',
+            'description'=>'required',
+            'summary-ckeditor'=>'required'
+        ]);
+
+        $news = new News;
+
+        $news->title = $request->input('title-news');
+        $news->description = $request->input('description');
+        $news->content = $request->input('summary-ckeditor');
+
+        $news->save();
+        return redirect('/news')->with('success','Save Success');
     }
 
     /**
@@ -54,7 +68,8 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        $news = News::findOrFail($id);
+        return view('backend.news.show',['news'=>$news]);
     }
 
     /**
@@ -65,7 +80,9 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news = News::findOrFail($id);
+
+        return view('backend.news.update',['news'=>$news]);
     }
 
     /**
@@ -77,7 +94,11 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $news = News::findOrFail($id);
+
+        $news->update($request->all());
+
+        return redirect('/news')->with('success','Update Success');
     }
 
     /**
@@ -86,8 +107,12 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $news = News::findOrFail($request->news_id);
+
+        $news->delete();
+
+        return redirect('/news')->with('success','Delete Success');
     }
 }

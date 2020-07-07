@@ -1,4 +1,3 @@
-
 <ul>
 	@isset($data)
 	@foreach($data as $item)

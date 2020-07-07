@@ -20,7 +20,7 @@ class HomeController extends Controller
     {
     	$projects = Project::orderBy('created_at','desc')->paginate(10);
     	$categories = Category::all();
-        $news = News::orderBy('created_at','desc')->paginate(10);
+        $news = News::orderBy('created_at','desc')->paginate(5);
     	return view('frontend.home',compact('projects','categories','news'));
     }
 }

@@ -177,3 +177,66 @@ section .section-title {
     margin-bottom: 10px;
 }
 }
+#notifi {
+	display: block;
+}
+#notifi #title-notifi{
+	display: block;
+	background-color: #fff;
+	color: red;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	margin-top: 2px;
+}
+#notifi #content-notifi
+{
+	
+	text-align: left;
+}
+#notifi #content-notifi ol{
+	padding-left: 21px;
+}
+#notifi #content-notifi ol li a{
+	text-decoration: none;
+}
+#adv{
+	background-image: url('/images/backgroundsearchform.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 250px;
+	
+}
+#adv ul li{
+	list-style: none;
+	padding: 0px;
+}
+#adv ul{
+	padding: 0px;
+}
+#adv ul li a{
+	text-decoration: none;
+	color: #000;
+}
+#adv h3{
+	color: red;
+	font-weight: bold;
+}
+.adv{
+	position: absolute;
+	display: block;
+	margin-top: 30%;
+	padding: 2px;
+}
+.survey ul li{
+	list-style: none;
+}
+.survey ul{
+	padding: 0px;
+}
+.survey ul li input{
+	margin-right: 7px;
+}
+.survey button{
+	margin-left: 40px;
+}

@@ -16,6 +16,43 @@
   </div>
   @endif
   <div class="border-binding"><span>Thông báo</span></div>
+  <div id="notifi" class="notifi">
+    <div id=title-notifi>Nội dung thông báo</div>
+    <div id="content-notifi">
+      <ol>
+        <li><a href="">Thông báo đóng tiền</a></li>
+        <li><a href="">Thông báo nâng cấp dịch vụ</a></li>
+        <li><a href="">Thông tin dịch vụ mới</a></li>
+        <li><a href="">Bảo trì website</a></li>
+      </ol>
+    </div>
+  </div>
+  <div class="border-binding"><span>Quảng cáo</span></div>
+  <div id="adv">
+    <div class="adv">
+      <h3>Liên hệ quảng cáo</h3>
+      <ul>
+        <li><a href=""><i class="fas fa-phone-alt"></i>096-562-5210</a></li>
+        <li><a href=""><i class="fas fa-envelope"></i>Dauthauvanchuyen@gmail.com</a></li>
+        <li></li>
+      </ul>
+    </div>  
+  </div>
+  <div class="border-binding"><span>Khảo sát nhanh</span></div>
+  <div id="survey">
+    <div class="survey">
+      <p>Theo bạn, website cần triển khai thêm những dịch vụ gì?</p>
+    <ul>
+      <li><input type="radio" value="1">Cải thiện giao diện</li>
+      <li><input type="radio" value="2">Có dịch vụ riêng cho khách hàng thân thuộc</li>
+      <li><input type="radio" value="3"><a href="#">Ý kiến khác</a></li>
+    </ul>
+    
+      <button type="submit" class="btn btn-primary">Bình chọn</button>
+      <button class="btn btn-default">Bỏ qua</button>
+   
+    </div>
+  </div>
 </div>
 
 <div id="content-main" class="col-md-9">
@@ -52,8 +89,11 @@
   <div class="border-binding">
     <span>Tin Tức</span>
   </div>
-    <div class="list-new">
+    <div class="list-news">
       @include('frontend.news.index',['data'=>$news ?? null])
+    </div>
+    <div style="margin-bottom: 10px;">
+    <a href=""><button class="btn btn-info" style="margin-left: 50%">Xem thêm</button></a>
     </div>
 </div>
 </div>

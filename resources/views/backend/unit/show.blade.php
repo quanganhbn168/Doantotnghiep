@@ -23,7 +23,7 @@
 
 	<h2>Đơn vị tính</h2>
 	<div class="grid-view">
-	<button type="button" style="float: right;margin-bottom: 2px;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-plus"> Thêm
+	<button type="button" style="float: right;margin-bottom: 2px;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><span class="fas fa-plus"> Thêm
 	</button>
 	@if (!empty ($data))
 		<table border="1" width="600">
@@ -31,15 +31,15 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Tên sản phẩm</th>
-      <th scope="col" colspan="2" style="width: 20%;text-align: center;">Action</th>
+      <th scope="col" colspan="2" style="width: 25%;text-align: center;">Action</th>
     </tr>
   </thead>
 			@foreach ($data as $item)
   <tbody>
     <tr>
       <td>{{ $item['name'] }}</td>
-      <td><button class="btn btn-primary" data-nameunit="{{$item->name}}" data-mydes="{{$item->description}}" data-unitid="{{$item->id}}" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-edit"> Edit</button></td>
-	  <td><button class="btn btn-danger" data-unitid="{{$item->id}}" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"> Delete</button></td>
+      <td><button class="btn btn-primary" data-nameunit="{{$item->name}}" data-mydes="{{$item->description}}" data-unitid="{{$item->id}}" data-toggle="modal" data-target="#edit"><i class="fas fa-edit"></i> Edit</button></td>
+	  <td><button class="btn btn-danger" data-unitid="{{$item->id}}" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i> Delete</button></td>
     </tr>
     
   </tbody>

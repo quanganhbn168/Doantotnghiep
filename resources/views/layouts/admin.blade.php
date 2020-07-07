@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="{{ asset ('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -393,10 +393,12 @@
       var button = $(event.relatedTarget) // Button that triggered the modal
       var cateId = button.data('catid')
       var unitId = button.data('unitid')
+      var newsId = button.data('newsid')
       var modal = $(this)
     
       modal.find('.modal-body #catid').val(cateId)
       modal.find('.modal-body #unitid').val(unitId)
+      modal.find('.modal-body #newsid').val(newsId)
     })
 </script>
 </body>
