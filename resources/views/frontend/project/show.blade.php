@@ -5,8 +5,21 @@
 	Thông tin dự án
 @endsection
 @section('content')
+<style type="text/css">
+  #carouselExampleIndicators {
+  display: none;
+}
+#search-form
+{
+  display: none;
+}
+</style>
+$data_categories = {{$data_categories}}
+<?php echo "$data_categories"; ?>
 	<div class="container">
 		@if(count($errors)>0)
+}
+}
 <div class="alert alert-danger">
 <ul>
 	@foreach($errors->all() as $error)

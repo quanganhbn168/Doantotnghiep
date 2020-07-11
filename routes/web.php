@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/', 'Frontend\HomeController@index')->name('home');
 Route::namespace('Frontend')->middleware('checkauth')->group(function(){
 	Route::get('/approval', 'HomeController@approval')->name('approval');
-	Route::middleware(['approved'])->group(function () { 
+	// Route::middleware(['approved'])->group(function () { 
 		Route::get('/project/create','ProjectController@formcreate')->name('project.create');
 		Route::post('/project/create','ProjectController@store')->name('project.post.create');
 		Route::get('/project/show/{id}', 'ProjectController@show')->name('project.show');
@@ -27,11 +27,11 @@ Route::namespace('Frontend')->middleware('checkauth')->group(function(){
 		Route::get('/project/update/{id}','ProjectController@update')->name('project.update');
 		Route::delete('/project/delete/{id}','ProjectController@destroy')->name('project.delete');
 		Route::post('/contractor/join','ProjectController@attachContractor')->name('contractor.join');
-		/*Route::post('/contractor/project/update/{id}','ContractorController@updateProject')->name('contractor.project.update');*/
+		Route::post('/contractor/project/update/{id}','ContractorController@updateProject')->name('contractor.project.update');
 		Route::post('/order','OrderController@store')->name('create.order');
 		Route::get('/order/show/{id}','OrderController@show')->name('order.show');
 		Route::get('/order/list/{id}','OrderController@list')->name('order.list');
-    });
+    // });
 });
 
 

@@ -18,10 +18,10 @@ class HomeController extends Controller
 	}
     public function index()
     {
-    	$projects = Project::orderBy('created_at','desc')->paginate(10);
-    	$categories = Category::all();
-        $news = News::orderBy('created_at','desc')->paginate(5);
-    	return view('frontend.home',compact('projects','categories','news'));
+    	$data_projects = Project::orderBy('created_at','desc')->paginate(10);
+    	$data_categories = Category::all();
+        $data_news = News::orderBy('created_at','desc')->paginate(5);
+    	return view('frontend.home',compact('data_projects','data_categories','data_news'));
     }
 
     public function approval()

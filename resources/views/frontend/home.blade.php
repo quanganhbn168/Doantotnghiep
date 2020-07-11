@@ -8,8 +8,8 @@
 @section('content')
 <div id="content-left" class="col-md-3" style="float: right;">
   @if(Auth::guard('tenderer')->check())
-  <div class="list-group" style="margin-bottom: 15px">
-    <a href="#" class="list-group-item list-group-item-action active">Dự Án</a>
+  <div style="margin-bottom: 15px">
+    <div class="border-binding"><span>Thông báo</span></div>
     <a href="{{route('project.create')}}" class="list-group-item list-group-item-action">Tạo dự án mới</a>
     <a href="{{ route('project.list',['id'=>Auth::guard('tenderer')->user()->id]) }}" class="list-group-item list-group-item-action">Danh sách dự án</a>
     <a href="{{ route('order.list',['id'=>Auth::guard('tenderer')->user()->id]) }}" class="list-group-item list-group-item-action">Danh sách đơn hàng</a>
@@ -69,7 +69,7 @@
             </tr>
             </thead>
             <tbody>
-                @foreach ($projects as $key =>$project)
+                @foreach ($data_projects as $key =>$project)
               <tr>
                 <th scope="row">{{ $key + 1 }}</th>
                 <td><a href="{{route('project.show',['id' =>$project->id])}}">{{$project->name}}</a></td>
@@ -90,7 +90,7 @@
     <span>Tin Tức</span>
   </div>
     <div class="list-news">
-      @include('frontend.news.index',['data'=>$news ?? null])
+      @include('frontend.news.index',['data'=>$data_news ?? null])
     </div>
     <div style="margin-bottom: 10px;">
     <a href=""><button class="btn btn-info" style="margin-left: 50%">Xem thêm</button></a>

@@ -189,6 +189,9 @@ section .section-title {
 	text-align: center;
 	margin-top: 2px;
 }
+#content-main a{
+	text-decoration: none;
+}
 #notifi #content-notifi
 {
 	

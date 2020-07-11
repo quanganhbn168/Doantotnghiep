@@ -4,6 +4,15 @@
 Danh sách đơn hàng
 @endsection
 @section('content')
+<style>
+#carouselExampleIndicators {
+	display: none;
+}
+#search-form
+{
+	display: none;
+}
+</style>
 <div class="container-fluid">
 	@if(count($errors)>0)
 <div class="alert alert-danger">

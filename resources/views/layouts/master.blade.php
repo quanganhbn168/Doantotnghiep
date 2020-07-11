@@ -19,6 +19,7 @@
     <link href="{{asset ('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    @stack('styles')
 </head>
 <body>
     <div class="wrapper"> 
@@ -26,7 +27,7 @@
     <div class="container">
         <ul class="nav navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><img src="/images/logo.png" alt="" width="200px" height="auto"></a>
+                <a class="nav-link" href="{{url('/')}}"><img src="/images/logo.png" alt="" width="200px" height="auto"></a>
             </li>
         </ul>
         <ul class="nav navbar-nav mx-auto" style="display: block;">
@@ -177,19 +178,14 @@
       </div>
       <div id="search-form" class="sreach-form row">
         <div class="search col-md-7">
-          <h4>Tìm kiếm thông tin dự án</h4>
+        <h4>Tìm kiếm thông tin dự án</h4>
         <span>Kho dữ liệu được cập nhật liên tục</span>
         <form action="">
-          @include('frontend.search',['categories'=>$categories])
+          @include('frontend.partrial.search',['categories'=>$data_categories ?? null])
         </form>
         </div>
         <div class="info-search col-md-5">
-          <h4>Hiện tại đang có</h4>
-          <ul>
-            <li>{{$project->count()}} dự án đang đợi nhà thầu</li>
-            <li>{{$project->whereMonth('created_at', '=', date('m'))->count()}} dự án được đăng trong 15 ngày qua</li> 
-            <li>{{$project->whereMonth('created_at', '=', date('d'))->count()}} dự án được đăng trong 24h qua</li> 
-          </ul>
+          @include('frontend.partrial.info',['data'=>$project ?? null])
         </div>
       </div>
     </div>

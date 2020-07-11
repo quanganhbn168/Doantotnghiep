@@ -3,8 +3,11 @@
 @section('page_title')
 Tạo dự án mới
 @endsection
-
+@push('styles')
+    <link href="{{ asset('css/partial.css') }}" rel="stylesheet">
+@endpush
 @section('content')
+
 <div>
   <div class="card project">
     <div class="card-body">
@@ -70,6 +73,7 @@ Tạo dự án mới
     </div>
   </div>
 </div>
+
 <script>
   // Linked date and time picker 
   // start date date and time picker 

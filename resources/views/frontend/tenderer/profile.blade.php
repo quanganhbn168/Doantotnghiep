@@ -13,4 +13,13 @@ Thông tin bên mời thầu
 	    
 	</div>
 </div>
+<style>
+#carouselExampleIndicators {
+	display: none;
+}
+#search-form
+{
+	display: none;
+}
+</style>
 @endsection
