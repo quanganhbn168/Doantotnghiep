@@ -14,8 +14,7 @@
   display: none;
 }
 </style>
-$data_categories = {{$data_categories}}
-<?php echo "$data_categories"; ?>
+
 	<div class="container">
 		@if(count($errors)>0)
 }
@@ -232,6 +231,7 @@ $data_categories = {{$data_categories}}
   </div>
 </div>
 <!-- end create a order -->
+</div>
 @endsection
 
 @section('script')

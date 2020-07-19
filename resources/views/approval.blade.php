@@ -5,12 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Waiting for Approval</div>
+                    <div class="card-header">Chờ Phê Duyệt</div>
 
                     <div class="card-body">
-                        Your account is waiting for our administrator approval.
+                        Tài khoản của bạn đang được chờ Quản trị viên phê duyệt
                         <br />
-                        Please check back later.
+                        Vui lòng quay lại sau.
+                        <br />
+                        <a href="/">Quay lại trang chủ</a>
                     </div>
                 </div>
             </div>

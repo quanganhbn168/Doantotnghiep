@@ -292,3 +292,9 @@ body {
     width: 40px;
     text-align: center;
   }
+#dataTable .user-active{
+  background-color: #00fd00;
+}
+#dataTable .user-blocked{
+  background-color: #f8fd00;
+}

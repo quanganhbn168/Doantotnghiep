@@ -19,6 +19,7 @@
     <link href="{{asset ('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('favicon-16x16.png') }}">
     @stack('styles')
 </head>
 <body>
@@ -65,7 +66,7 @@
           <div class="collapse navbar-collapse container" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto menu">
               <li class="nav-item active">
-                <a class="nav-link" href="{!!url('/') !!}">Trang chủ<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{!!url('/') !!}"><i class="fas fa-home"></i></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Giới thiệu</a>
@@ -88,7 +89,7 @@
                               </a>
 
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="" style="color: black;">Proflie</a>
+                                  <a class="dropdown-item" href="{{ route('tenderer.show',['id'=>Auth::guard('tenderer')->user()->id]) }}" style="color: black;">Proflie</a>
                                   <a class="dropdown-item" href="{{ route('tenderer.logout') }}" style="color: black;">
                                       Logout
                                   </a>

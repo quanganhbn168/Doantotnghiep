@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page_title')
-	Danh sách dự thầu
+	Danh sách phê duyệt nhà thầu 
 @endsection
 @section('style')
 <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
@@ -18,11 +18,10 @@
 </div>
 @endif
 
-@if(\Session::has('success'))
-	
-	<div class="alert alert-success">
-		<p>{{\Session::get('success')}}</p>
-	</div>
+@if (session('message'))
+    <div class="alert alert-success" role="alert">
+        {{ session('message') }}
+    </div>
 @endif
 
 
@@ -31,43 +30,29 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Danh sách dự thầu</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Danh sách phê duyệt nhà thầu</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
-            <tr>
+            <tr align="center">
               <th>Tên công ty</th>
               <th>Email</th>
-              <th>Phê duyệt vào lúc</th>
-              <th>Trạng thái</th>
-              <th>Xem thông tin</th>
-              <th>Khoá</th>
+              <th>Đăng ký lúc</th>
+              <th>Phê duyệt</th>
+              <th>Không Phê duyệt</th>
             </tr>
           </thead>
           <tbody>
           	@isset($contractors)
           	@foreach($contractors as $item)
-            <tr>
+            <tr align="center">
               <td>{{$item->name}}</td>
               <td>{{$item->email}}</td>
-              <td>{{$item->approved_at}}</td>
-              @if($item->status)
-              <td>
-              	<span style="background-color: #00fd00;color: #000;">
-              		Đang hoạt động
-              	</span>
-              </td>
-              @else
-              <td>
-              	<span style="background-color: #f8fd00;color: #000;">
-              		Đang tạm khoá
-              	</span>
-              </td>
-              @endif
-              <td><button class="btn btn-primary"><i class="fas fa-edit"></i></button></td>
-              <td><button class="btn btn-danger"><i class="fas fa-lock"></i></button></td>
+              <td>{{$item->created_at}}</td>
+              <td><button class="btn btn-primary">Đồng ý</button></td>
+              <td><button class="btn btn-danger">Không đồng ý</button></td>
             </tr>
           </tbody>
           @endforeach

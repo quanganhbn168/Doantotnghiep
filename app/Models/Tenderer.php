@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Tenderer extends Authenticatable
 {
     use Notifiable;
-
+    //public $timestamps = false;
     protected $guard = 'tenderer';
 
     protected $fillable = [
@@ -18,6 +18,8 @@ class Tenderer extends Authenticatable
         'address',
         'phone',
         'website',
+        'approved_at',
+        
     ];
 
     public function projects(){

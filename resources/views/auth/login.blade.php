@@ -56,7 +56,15 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
-                                <a href="{{ route('tenderer.register') }}">Đăng ký Tại đây</a>
+                                @isset($url)
+                                @if($url=='tenderer')
+                                <a href="{{ route('tenderer.register') }}">Đăng ký tại đây</a>
+                                @else
+                                <a href="{{ route('contractor.register') }}">
+                                    Đăng ký tại đây
+                                </a>
+                                @endif
+                                @endisset
                             </div>
                         </div>
 

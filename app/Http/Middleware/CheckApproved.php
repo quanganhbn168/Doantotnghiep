@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class CheckApproved
 {
     /**
@@ -15,10 +15,16 @@ class CheckApproved
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->user()->approved_at) {
-            return redirect()->route('approval');
+        if (Auth::guard('tenderer')->check()) {
+            if (!Auth::guard('tenderer')->user()->approved_at) {
+                return redirect()->route('approval');
+            }
         }
-        
-        return $next($request);
+        if (Auth::guard('contractor')->check()) {
+            if (!Auth::guard('contractor')->user()->approved_at) {
+                return redirect()->route('approval');
+            }
+        }
+            return $next($request);
     }
 }

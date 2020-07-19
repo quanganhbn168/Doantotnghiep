@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/', 'Frontend\HomeController@index')->name('home');
 Route::namespace('Frontend')->middleware('checkauth')->group(function(){
 	Route::get('/approval', 'HomeController@approval')->name('approval');
-	// Route::middleware(['approved'])->group(function () { 
+		Route::middleware(['approved'])->group(function () { 
 		Route::get('/project/create','ProjectController@formcreate')->name('project.create');
 		Route::post('/project/create','ProjectController@store')->name('project.post.create');
 		Route::get('/project/show/{id}', 'ProjectController@show')->name('project.show');
@@ -26,12 +26,13 @@ Route::namespace('Frontend')->middleware('checkauth')->group(function(){
 		Route::get('/project/list/{id}','ProjectController@list')->name('project.list');
 		Route::get('/project/update/{id}','ProjectController@update')->name('project.update');
 		Route::delete('/project/delete/{id}','ProjectController@destroy')->name('project.delete');
+		Route::get('/project/detail','ProjectController@detail')->name('project.detail');
 		Route::post('/contractor/join','ProjectController@attachContractor')->name('contractor.join');
 		Route::post('/contractor/project/update/{id}','ContractorController@updateProject')->name('contractor.project.update');
 		Route::post('/order','OrderController@store')->name('create.order');
 		Route::get('/order/show/{id}','OrderController@show')->name('order.show');
 		Route::get('/order/list/{id}','OrderController@list')->name('order.list');
-    // });
+     });
 });
 
 
@@ -57,8 +58,15 @@ Route::get('/logout/contractor','Auth\LogoutController@contractorLogout')->name(
 
 
 Route::namespace('Backend')->group(function(){
-	Route::get('/admin', function(){ return view('backend/index');})->name('admin');
+	Route::get('/admin', 'DashboardController@index')->name('admin');
 	Route::get('/tenderer/index', 'TendererController@index')->name('backend.tenderer.index');
+	Route::get('/tenderer/approved', 'TendererController@listapproved')->name('tenderer.getlistapproved');
+	Route::get('/tenderer/approved/{id}', 'TendererController@approved')->name('tenderer.approved');
+	Route::get('/contractor/index', 'ContractorController@index')->name('backend.contractor.index');
+	Route::get('/contractor/approved', 'ContractorController@listapproved')
+	->name('contractor.getlistapproved');
+	Route::post('/contractor/approved/{id}', 'ContractorController@approved')
+	->name('contractor.approved');
 	Route::resource('/category', 'CategoryController');
 	Route::resource('/unit','UnitController');
 	Route::resource('/news','NewsController');

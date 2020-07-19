@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class Contractor extends Authenticatable
 {
+    //public $timestamps = false;
     protected $fillable = [
         'name', 
         'email', 
@@ -14,6 +15,8 @@ class Contractor extends Authenticatable
         'address',
         'phone',
         'website',
+        'apropved_at',
+        
         
     ];
 

@@ -9,10 +9,21 @@
 <div id="content-left" class="col-md-3" style="float: right;">
   @if(Auth::guard('tenderer')->check())
   <div style="margin-bottom: 15px">
-    <div class="border-binding"><span>Thông báo</span></div>
-    <a href="{{route('project.create')}}" class="list-group-item list-group-item-action">Tạo dự án mới</a>
-    <a href="{{ route('project.list',['id'=>Auth::guard('tenderer')->user()->id]) }}" class="list-group-item list-group-item-action">Danh sách dự án</a>
-    <a href="{{ route('order.list',['id'=>Auth::guard('tenderer')->user()->id]) }}" class="list-group-item list-group-item-action">Danh sách đơn hàng</a>
+    <div class="border-binding"><span>quản lý dự án</span></div>
+    <div class="quick-menu">
+      <ul>
+      <li><a href="{{route('project.create')}}">Tạo dự án mới</a></li>
+      <li>
+        <a href="{{ route('project.list',['id'=>Auth::guard('tenderer')->user()->id]) }}">Danh sách dự án
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('order.list',['id'=>Auth::guard('tenderer')->user()->id]) }}">Danh sách đơn hàng
+        </a>
+      </li>
+    </ul>
+    </div>
+    
   </div>
   @endif
   <div class="border-binding"><span>Thông báo</span></div>
@@ -43,9 +54,17 @@
     <div class="survey">
       <p>Theo bạn, website cần triển khai thêm những dịch vụ gì?</p>
     <ul>
-      <li><input type="radio" value="1">Cải thiện giao diện</li>
-      <li><input type="radio" value="2">Có dịch vụ riêng cho khách hàng thân thuộc</li>
-      <li><input type="radio" value="3"><a href="#">Ý kiến khác</a></li>
+      <li>
+        <input type="radio" id="caithien" name="binhchon" value="cải thiện dịch vụ hiện tại">
+        <label for="caithien">Cải thiện dịch vụ hiện tại</label>
+      </li>
+      <li>
+        <input type="radio" id="dichvurieng" name="binhchon" value="Có dịch vụ riêng">
+        <label for="dichvurieng">Thêm dịch vụ khác</label>
+      </li>
+      <li>
+        <input type="radio" id="ykienkhac" name="binhchon"><a href="#">Ý kiến khác(chuyển đến trang góp ý)</a>
+      </li>
     </ul>
     
       <button type="submit" class="btn btn-primary">Bình chọn</button>
@@ -82,7 +101,7 @@
           </table>
         </div>
 	<div>
-    <a href=""><button class="btn btn-info" style="margin-left: 50%">Xem thêm</button></a>
+    <a href="{{ route('project.detail') }}"><button class="btn btn-primary" style="margin-left: 50%">Xem thêm</button></a>
   </div>
 
 <div class="news">
@@ -93,7 +112,7 @@
       @include('frontend.news.index',['data'=>$data_news ?? null])
     </div>
     <div style="margin-bottom: 10px;">
-    <a href=""><button class="btn btn-info" style="margin-left: 50%">Xem thêm</button></a>
+    <a href=""><button class="btn btn-primary" style="margin-left: 50%">Xem thêm</button></a>
     </div>
 </div>
 </div>

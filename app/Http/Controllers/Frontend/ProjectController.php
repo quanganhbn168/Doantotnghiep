@@ -47,6 +47,12 @@ class ProjectController extends Controller
         
     	return view('frontend.project.show', ['project'=>$project,'products'=>$products]);
     }
+
+    public function detail()
+    {
+        $projects = Project::orderBy('created_at','desc')->paginate(15);
+        return view('frontend.project.detail',['projects'=>$projects]);
+    }
     public function store(Request $request)
     {
         $name = $request->input('projectName');

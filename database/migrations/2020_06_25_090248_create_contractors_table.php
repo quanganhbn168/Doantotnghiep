@@ -25,6 +25,7 @@ class CreateContractorsTable extends Migration
             $table->string('status')->default('1');
             $table->boolean('is_contractor')->default(false);
             $table->timestamp('approved_at')->nullable();
+            $table->timestamps();
         });
     }
 

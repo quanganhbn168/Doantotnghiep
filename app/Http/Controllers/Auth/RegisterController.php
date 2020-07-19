@@ -74,7 +74,7 @@ class RegisterController extends Controller
 
     public function showContractorRegisterForm()
     {
-        return view('auth.register', ['url' => 'tenderer']);
+        return view('auth.register', ['url' => 'contractor']);
     }
 
     /**
@@ -97,7 +97,7 @@ class RegisterController extends Controller
     /*Create Tenderer*/
     protected function createTenderer(Request $request)
     {
-        $this->validator($request->all());
+        $this->validator($request->all())->validate();
         $tenderer = Tenderer::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -106,12 +106,7 @@ class RegisterController extends Controller
             'phone'=>$request->input('phone'),
             'website'=>$request->input('website')
         ]);
-        $admin = User::where('admin', 1)->first();
-            if ($admin) {
-                $admin->notify(new NewUser($user));
-            }
-
-            return $user;
+        return redirect()->intended('login/tenderer');
     }
 
     /*Create Contractor*/

@@ -24,6 +24,7 @@ class CreateTenderersTable extends Migration
             $table->string('phone');
             $table->string('status')->default('1');
             $table->boolean('is_tenderer')->default(false);
+            $table->timestamps();
             $table->timestamp('approved_at')->nullable();
         });
     }

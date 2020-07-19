@@ -38,6 +38,7 @@ Danh sách đơn hàng
 					<tr>
 						<td width="5%">Stt</td>
 						<td width="50%">Tên đơn hàng</td>
+						<td>Tình trạng đơn hàng</td>
 						<td>Ngày tạo</td>
 						<td colspan="2" width="10%">Tuỳ chọn</td>
 					</tr>
@@ -47,6 +48,7 @@ Danh sách đơn hàng
 					<tr>
 						<td>{{$key+1}}</td>
 						<td><a href="{{ route('order.show',['id' =>$order->id]) }}">{{$order->project->name}}</a></td>
+						<td>Đang tiến hành</td>
 						<td>{{date('d/m/Y', strtotime($order->created_at))}}</td>
 						<td><button type="button" class="btn btn-info" data-catid="{{$order->id}}" data-myname="{{$order->name}}" data-toggle="modal" data-target="#edit">
 		      			<span class="glyphicon glyphicon-edit"> Edit</button></td>

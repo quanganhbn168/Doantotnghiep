@@ -17,7 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset ('css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+  <link rel="shortcut icon" href="{{ asset('favicon-16x16.png') }}">
+  @yield('style')
 </head>
 
 <body id="page-top">
@@ -63,12 +64,47 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Người dùng:</h6>
-            <a class="collapse-item" href="buttons.html">Bên mời thầu</a>
-            <a class="collapse-item" href="cards.html">Bên dự thầu </a>
-            <a class="collapse-item" href="cards.html">Yêu cầu duyệt</a>
+            <a class="collapse-item" href="{{ route('backend.tenderer.index') }}">Bên mời thầu</a>
+            <a class="collapse-item" href="{{ route('backend.contractor.index') }}">Bên dự thầu </a>
           </div>
         </div>
       </li>
+      
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          <i class="fas fa-user-check"></i>
+          <span>Yêu cầu duyệt
+            
+            <span class="badge badge-danger" style="margin-left: 40px;">
+              {{$count_tenderer + $count_contractor}}
+            </span>
+            
+            
+          </span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Người dùng:</h6>
+            <a class="collapse-item" href="{{ route('tenderer.getlistapproved') }}">Bên mời thầu
+              
+              <span class="badge badge-danger" style="float: right;">
+                {{$count_tenderer}}
+              </span>
+              
+            </a>
+            <a class="collapse-item" href="{{ route('contractor.getlistapproved') }}">Bên dự thầu
+              
+              <span class="badge badge-danger" style="float: right;">
+                {{$count_contractor}}
+              </span>
+              
+            </a>
+          </div>
+        </div>
+      </li>
+
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
@@ -301,7 +337,7 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="pagecontent">
             @yield('content')
         <!-- /.container-fluid -->
 
@@ -359,11 +395,13 @@
   <script src=" {{asset('js/sb-admin-2.min.js')}} "></script>
 
   <!-- Page level plugins -->
-  {{-- <script src="vendor/chart.js/Chart.min.js"></script>
-
+  {{-- <script src="vendor/chart.js/Chart.min.js"></script> --}}
+  
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
+  {{-- <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script> --}}
+  
+  @yield('script')
 <script>
     $('#edit').on('show.bs.modal', function (event) {
       console.log('open modal')

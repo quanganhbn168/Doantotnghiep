@@ -45,8 +45,9 @@ Thông tin đơn hàng
 		<div class="card-body">
 			<p>Tên dự án: {{$orders->project->name}}</p>
 			<p>Loại dự án: {{$orders->project->category->name}}</p>
-			<p>Thời gian bắt đầu: {{$orders->project->timeStart}}</p>
-			<p>Thời gian kết thúc: {{$orders->project->timeEnd}}</p>
+			<p>Giá trúng thầu bằng số: {{$orders->price}}</p>
+			<p>Dịch vụ: {{$orders->service}}</p>
+			<p>Chốt đơn lúc: {{$orders->created_at}}</p>
 		</div>
 	</div>
 	<div class="card">
