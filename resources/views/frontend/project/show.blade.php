@@ -48,11 +48,11 @@
 		  	</div>
 		  	<div class="row">
 		  	<label class="col-md-3">Thời gian bắt đầu:</label>
-		  	<span class="col-md-9">{{\Carbon\Carbon::parse($project->timeStart)->format('d/m/Y')}}</span>
+		  	<span class="col-md-9">{{date('d/m/Y',strtotime($project->timeStart))}}</span>
 		  	</div>
 		  	<div class="row">
 		  	<label class="col-md-3">Thời gian kết thúc:</label>
-		  	<span class="col-md-9">{{\Carbon\Carbon::parse($project->timeEnd)->format('d/m/Y')}}</span>
+		  	<span class="col-md-9">{{date('d/m/Y',strtotime($project->timeEnd))}}</span>
 		  	</div>
 		  	<div class="row">
 		  	<label class="col-md-3">Loại dự án:</label>

@@ -77,6 +77,9 @@
               <li>
                 <a class="nav-link" href="#">Hướng dẫn sử dụng</a>
               </li>
+              <li>
+                <a class="nav-link" href="#">Liên Hệ</a>
+              </li>
             </ul>
 
             <ul class="navbar-nav ml-auto user">

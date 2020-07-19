@@ -16,6 +16,7 @@ $factory->define(Tenderer::class, function (Faker $faker) {
         'phone'		=> $faker->unique()->phoneNumber,
         'website'	=> $faker->url,
         'status'	=> $faker->boolean,
-        'is_tenderer'=>$faker->boolean
+        'is_tenderer'=>$faker->boolean,
+        'approved_at'   =>randomElement([now(),null])
     ];
 });

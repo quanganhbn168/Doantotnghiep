@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(News::class, function (Faker $faker) {
     return [
-        'title'=>$faker->name,
+        'title'=>$faker->sentence,
         'description'=>$faker->text($maxNbChars = 200),
-        'content'=>$faker->text($maxNbChars = 200)
+        'content'=>$faker->paragraph
     ];
 });

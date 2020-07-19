@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('contractor_id');
             $table->bigInteger('project_id');
             $table->double('price');
+            $table->boolean('status')->default(false);
             $table->string('service')->nullable();
 
             $table->index('tenderer_id');

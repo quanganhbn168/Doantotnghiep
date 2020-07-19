@@ -7,38 +7,54 @@ Tạo dự án mới
     <link href="{{ asset('css/partial.css') }}" rel="stylesheet">
 @endpush
 @section('content')
+@if(count($errors)>0)
+<div class="alert alert-danger">
+<ul>
+  @foreach($errors->all() as $error)
+  <li>{{$error}}</li>
+  @endforeach
+</ul>
+</div>
+@endif
 
+@if(\Session::has('success'))
+  
+  <div class="alert alert-success">
+    <p>{{\Session::get('success')}}</p>
+  </div>
+@endif
 <div>
   <div class="card project">
     <div class="card-body">
     <div class="card-header bg-primary">Thông tin dự án</div>
-      <form method="POST" action="{{ route('project.post.create') }}" id="createproject">
-        <span id="result"></span>
+      <form action="{{ route('project.update',['id'=>$project->id]) }}" id="updateproject" method="POST">
+        @method('POST')
         @csrf
         <div class="form-group row">
           <label for="tenderername" class="col-md-3">Tên nhà mời thầu</label>
           <label>{{Auth::guard('tenderer')->user()->name}}</label>
         </div>
-
+        <input type="hidden" name="project_id" id="idproject" value="{{$project->id}}">
         <div class="form-group row">
           <label for="projectName" class="col-md-3">Tên dự án:</label>
-          <input type="text" class="form-control col-md-5" name="projectName" id="projectName" placeholder="Nhập vào tên dự án">
+          <input type="text" class="form-control col-md-5" name="projectName" id="projectName" placeholder="Nhập vào tên dự án" value="{{$project->name,old('name')}}">
         </div>
         <div class="form-group row">
           <label for="category" class="col-md-3">Loại hàng vận chuyển:</label>
           <select class="form-control col-md-5" name="category" id="category">
             @isset($categories)
               @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
+                <option value="{{$category->id}}" {{ $project->category->id == $category->id ? 'selected="selected"' : '' }}>{{$category->name}}
+                </option>
               @endforeach
             @endisset
           </select>
         </div>
         <div class="form-group row">
-          <label for="datepicker" class="col-md-3">Thời gian bắt đầu:</label><input id="datepicker" name="timeStart" width="276" />
+          <label for="datepicker" class="col-md-3">Thời gian bắt đầu:</label><input id="datepicker" name="timeStart" width="276" value="{{$project->timeStart}}" />
         </div>
         <div class="form-group row">
-          <label for="datepicker2" class="col-md-3">Thời gian kết thúc:</label><input id="datepicker2" name="timeEnd" width="276" />
+          <label for="datepicker2" class="col-md-3">Thời gian kết thúc:</label><input id="datepicker2" name="timeEnd" width="276" value="{{$project->timeEnd}}" />
         </div>
         
     <div class="card-header bg-primary">Danh sách sản phẩm</div>
@@ -52,16 +68,28 @@ Tạo dự án mới
               <th scope="col">Yêu cầu thêm</th>
             </tr>
           </thead>
+          @isset($products)
+          @foreach($products as $product)
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td><input class="form-control" type="text" name="nameProduct[]" placeholder="Nhập vào tên sản phẩm"></td>
-              
-              <td><input type="number" class="form-control" name="quantity[]" placeholder="Nhập vào số lượng sản phẩm"></td>
-              <td><input type="text" class="form-control" name="description[]" placeholder="Yêu cầu thêm"></td>
+              <td>
+                <input class="form-control" type="text" id="nameProduct" name="nameProduct[]" placeholder="Nhập vào tên sản phẩm" value="{{$product->name}}">
+              </td>
+              <td>
+                <select class="form-control" name="unit[]" id="unit">
+                  @isset($units)
+                  @foreach($units as $unit)"
+                    <option value="{{$unit->id}}" {{ $product->unit->id == $unit->id ? 'selected="selected"' : '' }}>{{$unit->name}}</option>
+                  @endforeach
+                  @endisset
+                </select>
+              </td>
+              <td><input type="number" class="form-control" name="quantity[]" placeholder="Nhập vào số lượng sản phẩm" value="{{$product->quantity}}"></td>
+              <td><input type="text" class="form-control" name="description[]" placeholder="Yêu cầu thêm" value="{{$product->description}}"></td>
             </tr>
           </tbody>
-          
+          @endforeach
+          @endisset
           
         </table>
       </div>
@@ -102,7 +130,7 @@ Tạo dự án mới
 
 
 </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     //add new collum
 $(document).ready(function(){
   var count = 1;
@@ -110,7 +138,7 @@ $(document).ready(function(){
   function dynami_field(number)
   {
     var html = '<tr>';
-    html += '<td><input class="form-control" type="text" name="nameProduct[]" placeholder="Nhập vào tên sản phẩm"></td>';
+    html += '<td><input class="form-control" type="text" name="nameProduct[]" placeholder="Nhập vào tên sản phẩm" ></td>';
     html += '<td><select class="form-control" name="unit[]" id="unit">"@isset($units)""@foreach($units as $unit)"<option value="{{$unit->id}}">{{$unit->name}}</option>"@endforeach""@endisset"</select></td>';
     html +='<td><input type="number" class="form-control" name="quantity[]" placeholder="Nhập vào số lượng sản phẩm"></td>';
     html +='<td><input type="text" class="form-control" name="description[]" placeholder="Yêu cầu thêm"></td>';
@@ -139,7 +167,7 @@ $(document).ready(function(){
   
   
 });
-</script>
+</script> --}}
 <!-- <script type="text/javascript">
   $(document).ready(function(){      
       var postURL = "<?php echo url('addmore'); ?>";

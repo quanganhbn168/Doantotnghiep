@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Product;
-class ProductSeeder extends Seeder
+use App\Models\Order;
+class OrderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class,1200)->create();
+        factory(Order::class,200)->create();
     }
 }

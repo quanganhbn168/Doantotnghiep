@@ -46,11 +46,15 @@ Danh sách các dự án
 				<tbody>
 					<tr>
 						<td>{{$key+1}}</td>
-						<td><a href="{{ route('project.show',['id' =>$project->id]) }}">{{$project->name}}</a></td>
-						<td>{{date('d/m/Y', strtotime($project->created_at))}}</td>
-						<td><button type="button" class="btn btn-info" data-catid="{{$project->id}}" data-myname="{{$project->name}}" data-toggle="modal" data-target="#edit">
-		      			<span class="glyphicon glyphicon-edit"> Edit</button></td>
-			  			<td><button type="button" class="btn btn-danger" data-proid="{{$project->id}}" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"> Delete</button></td>
+						<td>
+							<a href="{{ route('project.show',['id' =>$project->id]) }}">{{$project->name}}
+							</a>
+						</td>
+						<td>
+							{{date('d/m/Y', strtotime($project->created_at))}}
+						</td>
+						<td><a href="{{ route('project.edit',['id'=>$project->id]) }}" class="btn btn-primary">Cập nhật</a></td>
+			  			<td><button type="button" class="btn btn-danger" data-proid="{{$project->id}}" data-toggle="modal" data-target="#delete">Xoá</button></td>
 					</tr>
 				</tbody>
 						@endforeach

@@ -128,5 +128,62 @@ class ProjectController extends Controller
 
         return back()->with('success','Bạn đã tham dự thành công');
     }
+    public function edit($id)
+    {
+        $project    = $this->projectService->findById($id);
+        $products   = $this->productService->getByProjectId($id);
+        $categories = Category::all();
+        $units = Unit::all();
+        return view('frontend.project.edit',
+        ['project'=>$project,'products'=>$products,'categories'=>$categories,'units'=>$units]);
+    }
 
+    public function update(Request $request)
+    {
+        $name = $request->input('projectName');
+
+        $rules = array(
+            
+            'timeStart' =>'required',
+            'timeEnd'   =>'required',
+            'nameProduct.*'=>'required',
+            'quatity.*' =>'required'
+        );
+        $error = Validator::make($request->all(),$rules);
+            if($error->fails())
+            {
+                return response()->json([
+                    'error'=>$error->errors()->all()
+                ]);
+            }
+
+
+        $tenderer_id = Auth::guard('tenderer')->user()->id;
+        $project = Project::findOrFail($request->project_id);
+        $project->update([
+            'name'=>$name,
+            'category_id'=>$request->input('category'),
+            'tenderer_id'=>$tenderer_id,
+            'timeStart'=>$request->timeStart,
+            'timeEnd'=>$request->timeEnd,
+        ]);
+
+            $nameProduct = $request->nameProduct;
+            $unit = $request->unit;
+            $quantity = $request->quantity;
+            $description = $request->description;
+            for($count = 0; $count<count($nameProduct); $count++)
+            {
+                DB::table('products')
+                ->where('project_id', $request->project_id)
+                ->update([
+                    'name'=> $nameProduct[$count],
+                    'unit_id'=>$unit[$count],
+                    'quantity'=>$quantity[$count],
+                    'description'=>$description[$count],
+                    'project_id'=>$project->id
+                ]);
+            }     
+        return redirect()->route('project.list',$tenderer_id)->with('success','Bạn đã cập nhật dự án thành công');
+    }
 }
