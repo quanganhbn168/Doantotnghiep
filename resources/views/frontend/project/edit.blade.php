@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page_title')
-Tạo dự án mới
+Cập nhật dự án
 @endsection
 @push('styles')
     <link href="{{ asset('css/partial.css') }}" rel="stylesheet">
@@ -35,6 +35,7 @@ Tạo dự án mới
           <label>{{Auth::guard('tenderer')->user()->name}}</label>
         </div>
         <input type="hidden" name="project_id" id="idproject" value="{{$project->id}}">
+        
         <div class="form-group row">
           <label for="projectName" class="col-md-3">Tên dự án:</label>
           <input type="text" class="form-control col-md-5" name="projectName" id="projectName" placeholder="Nhập vào tên dự án" value="{{$project->name,old('name')}}">
@@ -68,12 +69,13 @@ Tạo dự án mới
               <th scope="col">Yêu cầu thêm</th>
             </tr>
           </thead>
-          @isset($products)
-          @foreach($products as $product)
+          @if($products || !empty($products))
           <tbody>
+          @foreach($products as $product)
             <tr>
               <td>
                 <input class="form-control" type="text" id="nameProduct" name="nameProduct[]" placeholder="Nhập vào tên sản phẩm" value="{{$product->name}}">
+                <input type="hidden" name="product_id[]" value="{{$product->id}}">
               </td>
               <td>
                 <select class="form-control" name="unit[]" id="unit">
@@ -81,15 +83,15 @@ Tạo dự án mới
                   @foreach($units as $unit)"
                     <option value="{{$unit->id}}" {{ $product->unit->id == $unit->id ? 'selected="selected"' : '' }}>{{$unit->name}}</option>
                   @endforeach
-                  @endisset
+                  @endif
                 </select>
               </td>
               <td><input type="number" class="form-control" name="quantity[]" placeholder="Nhập vào số lượng sản phẩm" value="{{$product->quantity}}"></td>
               <td><input type="text" class="form-control" name="description[]" placeholder="Yêu cầu thêm" value="{{$product->description}}"></td>
             </tr>
-          </tbody>
           @endforeach
-          @endisset
+          </tbody>
+          @endif
           
         </table>
       </div>
@@ -116,15 +118,15 @@ Tạo dự án mới
   });
   
   $(function () {
-        $('#datepicker').datetimepicker();
-        $('#datepicker2').datetimepicker({
+        $('#datepicker').datepicker();
+        $('#datepicker2').datepicker({
             useCurrent: false //Important! See issue #1075
         });
         $("#datepicker").on("dp.change", function (e) {
-            $('#datepicker2').data("DateTimePicker").minDate(e.date);
+            $('#datepicker2').data("DatePicker").minDate(e.date);
         });
         $("#datepicker2").on("dp.change", function (e) {
-            $('#datepicker').data("DateTimePicker").maxDate(e.date);
+            $('#datepicker').data("DatePicker").maxDate(e.date);
         });
     });
 

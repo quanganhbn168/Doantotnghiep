@@ -164,26 +164,26 @@ class ProjectController extends Controller
             'name'=>$name,
             'category_id'=>$request->input('category'),
             'tenderer_id'=>$tenderer_id,
-            'timeStart'=>$request->timeStart,
-            'timeEnd'=>$request->timeEnd,
+            'timeStart'=>$request->input('timeStart'),
+            'timeEnd'=>$request->input('timeEnd'),
         ]);
+            
+            $nameProduct = $request->input('nameProduct');
+            $unit = $request->input('unit');
+            $quantity = $request->input('quantity');
+            $description = $request->input('description');
+            $products = $request->input('product_id');
 
-            $nameProduct = $request->nameProduct;
-            $unit = $request->unit;
-            $quantity = $request->quantity;
-            $description = $request->description;
-            for($count = 0; $count<count($nameProduct); $count++)
+            foreach($products as $key => $value)
             {
-                DB::table('products')
-                ->where('project_id', $request->project_id)
-                ->update([
-                    'name'=> $nameProduct[$count],
-                    'unit_id'=>$unit[$count],
-                    'quantity'=>$quantity[$count],
-                    'description'=>$description[$count],
-                    'project_id'=>$project->id
+                DB::table('products')->where('id',$value)->update([
+                    'name'      => $nameProduct[$key],
+                    'unit_id'   => $unit[$key],
+                    'quantity'  => $quantity[$key],
+                    'description' => $description[$key]
                 ]);
-            }     
+            }
+
         return redirect()->route('project.list',$tenderer_id)->with('success','Bạn đã cập nhật dự án thành công');
     }
 }
