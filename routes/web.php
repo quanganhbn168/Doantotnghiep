@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 Route::get('/', 'Frontend\HomeController@index')->name('home');
-Route::get('news/{id}','Fronen\NewsController@show')->name('news.show');
+
 Route::namespace('Frontend')->middleware('checkauth')->group(function(){
 	Route::get('/approval', 'HomeController@approval')->name('approval');
 		Route::middleware(['approved'])->group(function () { 
@@ -46,6 +46,9 @@ Route::namespace('Frontend')->middleware('checkauth')->group(function(){
 		
 		Route::get('/project/detail','ProjectController@detail')
 		->name('project.detail');
+		Route::get('/project/fetch_detail','ProjectController@fetchdetail');
+		Route::get('/searchproject/result','ProjectController@result')
+		->name('search.project');
 		//Contractor
 		Route::post('/contractor/join','ProjectController@attachContractor')
 		->name('contractor.join');
@@ -58,6 +61,9 @@ Route::namespace('Frontend')->middleware('checkauth')->group(function(){
 		->name('order.show');
 		Route::get('/order/list/{id}','OrderController@list')
 		->name('order.list');
+
+		Route::post('/imageupload','ImageController@store')
+		->name('upload.image');
      });
 });
 
@@ -92,7 +98,7 @@ Route::get('/logout/contractor','Auth\LogoutController@contractorLogout')
 
 
 Route::namespace('Backend')->group(function(){
-	Route::get('/admin', 'DashboardController@index')->name('admin');
+	Route::get('/admin', 'DashboardController@index')->name('dashboard');
 	Route::get('/tenderer/index', 'TendererController@index')
 	->name('backend.tenderer.index');
 	Route::get('/tenderer/approved', 'TendererController@listapproved')
@@ -108,6 +114,7 @@ Route::namespace('Backend')->group(function(){
 	Route::resource('/category', 'CategoryController');
 	Route::resource('/unit','UnitController');
 	Route::resource('/news','NewsController');
+	Route::resource('/request','RequestController');
 	Route::post('ckeditor/image_upload', 'CKEditorController@upload')
 	->name('upload');
 

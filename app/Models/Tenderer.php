@@ -29,4 +29,9 @@ class Tenderer extends Authenticatable
     public function orders(){
     	return $this->hasMany(Order::class);
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

@@ -50,9 +50,17 @@ class ProjectController extends Controller
 
     public function detail()
     {
-        $projects = Project::orderBy('created_at','desc')->paginate(15);
+        $projects = Project::where('publish',true)->orderBy('created_at','desc')->paginate(10);
         return view('frontend.project.detail',['projects'=>$projects]);
     }
+
+    public function fetchdetail(Request $request)
+    {
+        $projects = Project::where('publish',true)->orderBy('created_at','desc')->paginate(10);
+        return view('frontend.project.data_detail',compact('projects'))->render();
+    }
+
+
     public function store(Request $request)
     {
         $name = $request->input('projectName');
@@ -103,7 +111,7 @@ class ProjectController extends Controller
                 Product::insert($insert_data);
     	
 
-    	return view('frontend.project.create')->with('success','Bạn đã tạo thành công dự án mới');
+    	return redirect()->route('project.list',$tenderer_id)->with('success','Bạn đã tạo dự án mới thành công');
     }
 
     public function destroy(Request $request)
@@ -185,5 +193,25 @@ class ProjectController extends Controller
             }
 
         return redirect()->route('project.list',$tenderer_id)->with('success','Bạn đã cập nhật dự án thành công');
+    }
+
+    public function result(Request $request)
+    {   $data_categories=Category::all();
+        $category = $request->input('category');
+        
+        $datetime = $request->input('timeStart');
+        $keyword = $request->input('keyword');
+        
+        $query = Project::where('category_id',$category);
+        if(!$keyword==null){
+            $query->where('name','LIKE','%'.$keyword.'%');
+        }
+        if(!$datetime==null){
+            $query->where('timeStart',$datetime);
+        }
+        $projects = $query->get();
+        
+        return view('frontend.project.result',compact('projects','data_categories'));
+
     }
 }

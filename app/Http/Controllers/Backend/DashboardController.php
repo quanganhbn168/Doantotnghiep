@@ -12,7 +12,8 @@ class DashboardController extends Controller
     {
     	$count_tenderer = Tenderer::whereNull('approved_at')->count();
     	$count_contractor = Contractor::whereNull('approved_at')->count();
-
-    	return view('layouts.admin',compact('count_tenderer','count_contractor'));
+    	$tenderer = Tenderer::where('status',true)->count();
+    	$contractor = Contractor::where('status',true)->count();
+    	return view('backend.index',compact('count_tenderer','count_contractor','tenderer','contractor'));
     }
 }

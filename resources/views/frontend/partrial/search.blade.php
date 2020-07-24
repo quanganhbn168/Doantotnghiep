@@ -1,6 +1,6 @@
 <div class="form-group row">
           <label for="category" class="col-md-4">Loại hàng vận chuyển:</label>
-          <select class="form-control col-md-8" name="category" id="category">
+          <select class="form-control col-md-8" name="category[]" id="category">
             @isset($categories)
               @foreach($categories as $category)
                 <option value="{{$category->id}}">{{$category->name}}</option>
@@ -14,7 +14,7 @@
   <div class="form-group row">
     <label for="keyword" class="col-md-4">Từ khoá tìm kiếm</label>
     <div class="input-group mb-3 col-md-8" style="padding: 0">
-    <input type="text" class="form-control" placeholder="Nhập vào thông tin tìm kiếm">
+    <input type="text" class="form-control" placeholder="Nhập vào thông tin tìm kiếm" name="keyword">
     <div class="input-group-append">
       <button type="submit" class="btn btn-primary">Tìm kiếm</button>
     </div>

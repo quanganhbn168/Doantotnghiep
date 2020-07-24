@@ -5,6 +5,7 @@ use View;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Tenderer;
 use App\Models\Contractor;
+use App\Models\Category;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $count_tenderer = Tenderer::whereNull('approved_at')->count();
             $count_contractor = Contractor::whereNull('approved_at')->count();
             $view->with(['count_tenderer'=>$count_tenderer,'count_contractor'=>$count_contractor]);
+            $categories = Category::all();
         });
     }
 }

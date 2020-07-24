@@ -93,8 +93,8 @@
                 <th scope="row">{{ $key + 1 }}</th>
                 <td><a href="{{route('project.show',['id' =>$project->id])}}">{{$project->name}}</a></td>
                 <td><a href="{{route('tenderer.show',['id' =>$project->tenderer->id])}}">{{$project->tenderer->name}}</a></td>
-                <td>{{date('d/m/Y',strtotime($project->timeStart))}}</td>
-                <td>{{date('d/m/Y',strtotime($project->timeEnd))}}</td>
+                <td>{{$project->timeStart}}</td>
+                <td>{{$project->timeEnd}}</td>
               </tr>
               @endforeach
             </tbody>

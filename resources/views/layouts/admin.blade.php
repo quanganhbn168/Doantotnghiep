@@ -42,7 +42,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -108,17 +108,12 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link" href="{{ route('request.index') }}">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Quản lý nhân viên</span>
+          <span>Phản hồi khách hàng
+            <span class="badge badge-danger">9</span>
+          </span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Nhân viên</h6>
-            <a class="collapse-item" href="utilities-color.html">Viết bài</a>
-            <a class="collapse-item" href="utilities-border.html">Mod</a>
-          </div>
-        </div>
       </li>
 
       <!-- Divider -->
@@ -133,7 +128,8 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('category.index') }}">
           <i class="fas fa-atlas"></i>
-          <span>Danh mục</span></a>
+          <span>Danh mục</span>
+        </a>
       </li>
       <!-- Nav Item - unit -->
       <li class="nav-item">
